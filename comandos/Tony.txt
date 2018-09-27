@@ -3,3 +3,9 @@ php artisan make:migration create_citas_table --create=citas
 >php artisan make:migration create_consultas_table --create=consultas
 php artisan make:migration create_personales_table --create=personales
 php artisan make:migration create_pacientes_table --create=pacientes
+>php artisan migrate
+php artisan make:seeder MedicamentosTableSeeder
+php artisan make:seeder CitasTableSeeder
+php artisan make:seeder ConsultasTableSeeder
+php artisan make:seeder PersonalesTableSeeder
+php artisan make:seeder PacientesTableSeeder
