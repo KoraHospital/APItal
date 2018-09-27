@@ -51,14 +51,14 @@ class MedicamentosController extends Controller
         }
         else
         {
-        $medicamentoNuevo = new Medicamentos;
-        $medicamentoNuevo->nombre = $request->input('nombre');
-        $medicamentoNuevo->cantidad = $request->input('cantidad');
-        $medicamentoNuevo->aplicacion = $request->input('aplicacion');
-        $medicamentoNuevo->edad_aplicacion = $request->input('edad_aplicacion');
-        $medicamentoNuevo->fabricante = $request->input('fabricante');
-        $medicamentoNuevo->save();
-        return response()->json($medicamentoNuevo);
+            $medicamentoNuevo = new Medicamentos;
+            $medicamentoNuevo->nombre = $request->input('nombre');
+            $medicamentoNuevo->cantidad = $request->input('cantidad');
+            $medicamentoNuevo->aplicacion = $request->input('aplicacion');
+            $medicamentoNuevo->edad_aplicacion = $request->input('edad_aplicacion');
+            $medicamentoNuevo->fabricante = $request->input('fabricante');
+            $medicamentoNuevo->save();
+            return response()->json($medicamentoNuevo);
         }
     }
 
@@ -124,23 +124,10 @@ class MedicamentosController extends Controller
      */
     public function destroy($id)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required'
-        ]);
-        if ($validator->fails())
-        {
-            $response = array('response' => $validator->messages(), 'success' => false);
-            return $response;
-        }
-        else
-        {
-            $medicamento = Medicamentos::findOrFail($id);
-            if($medicamento->delete()){
-                $result = new MedicamentoResource($medicamento);
-                return response()->json($result);
-            }
+        $medicamento = Medicamentos::findOrFail($id);
+        if($medicamento->delete()){
+            $conversion = new MedicamentoResource($medicamento);
+            return response()->json($conversion);
         }
     }
-
-    
 }

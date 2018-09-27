@@ -14,7 +14,6 @@ class Medicamento extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
             'nombre' => $this->nombre,
             'cantidad' => $this->cantidad,

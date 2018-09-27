@@ -21,7 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('citas', 'CitasController');
 Route::resource('consultas', 'ConsultasController');
 Route::resource('medicamentos', 'MedicamentosController');
-Route::put('medicamentos/{id}', 'MedicamentosController@edit');
 Route::resource('pacientes', 'PacientesController');
 Route::resource('personales', 'PersonaslesController');
+
+Route::put('citas/{id}', 'CitasController@update');
+Route::put('consultas/{id}', 'ConsultasController@update');
+Route::put('medicamentos/{id}', 'MedicamentosController@update');
+Route::put('pacientes/{id}', 'PacientesController@update');
+Route::put('personales/{id}', 'PersonalesController@update');
 
