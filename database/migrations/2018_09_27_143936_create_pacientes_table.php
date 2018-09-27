@@ -18,7 +18,7 @@ class CreatePacientesTable extends Migration
             $table->string('nombre');
             $table->string('apellido_materno');
             $table->string('apellido_paterno');
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->string('direccion');
             $table->string('tipo_sangre');
             $table->double('peso', 5, 2);

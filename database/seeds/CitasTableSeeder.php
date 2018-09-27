@@ -11,6 +11,6 @@ class CitasTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Citas::class, 100)->create();
     }
 }

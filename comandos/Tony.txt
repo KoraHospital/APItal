@@ -3,9 +3,28 @@ php artisan make:migration create_citas_table --create=citas
 >php artisan make:migration create_consultas_table --create=consultas
 php artisan make:migration create_personales_table --create=personales
 php artisan make:migration create_pacientes_table --create=pacientes
+
 >php artisan migrate
+
 php artisan make:seeder MedicamentosTableSeeder
 php artisan make:seeder CitasTableSeeder
 php artisan make:seeder ConsultasTableSeeder
 php artisan make:seeder PersonalesTableSeeder
 php artisan make:seeder PacientesTableSeeder
+
+php artisan make:model Cintas
+php artisan make:model Consultas
+php artisan make:model Medicamentos
+php artisan make:model Pacientes
+php artisan make:model Personales
+
+php artisan make:factory CintasFactory
+php artisan make:factory ConsultasFactory
+php artisan make:factory MedicamentosFactory
+>php artisan make:factory PacientesFactory
+php artisan make:factory PersonalesFactory
+
+php artisan db:seed --class=MedicamentosTableSeeder
+>php artisan db:seed --class=PersonalesTableSeeder
+php artisan db:seed --class=PacientesTableSeeder
+php artisan db:seed --class=CitasTableSeeder
