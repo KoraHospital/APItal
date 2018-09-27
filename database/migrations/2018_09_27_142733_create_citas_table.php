@@ -14,7 +14,7 @@ class CreateCitasTable extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->increments('id_cita');
+            $table->increments('id');
             $table->integer('id_paciente');
             $table->dateTimeTz('fecha_hora');
             $table->integer('consultorio');

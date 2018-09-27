@@ -14,7 +14,7 @@ class CreatePersonalesTable extends Migration
     public function up()
     {
         Schema::create('personales', function (Blueprint $table) {
-            $table->increments('id_personal');
+            $table->increments('id');
             $table->string('nombre');
             $table->string('apellido_materno');
             $table->string('apellido_paterno');

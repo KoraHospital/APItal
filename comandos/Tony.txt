@@ -28,3 +28,16 @@ php artisan db:seed --class=MedicamentosTableSeeder
 >php artisan db:seed --class=PersonalesTableSeeder
 php artisan db:seed --class=PacientesTableSeeder
 php artisan db:seed --class=CitasTableSeeder
+php artisan db:seed --class=ConsultasTableSeeder
+
+php artisan make:controller CitasController --resource
+php artisan make:controller ConsultasController --resource
+>php artisan make:controller MedicamentosController --resource
+>php artisan make:controller PacientesController --resource
+php artisan make:controller PersonalesController --resource
+
+php artisan make:resource Paciente
+php artisan make:resource Cita
+php artisan make:resource Consulta
+php artisan make:resource Medicamento
+php artisan make:resource Personal
