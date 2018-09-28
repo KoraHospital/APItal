@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pacientes;
+use Validator;
+use App\Http\Resources\Paciente as PacienteResource;
+use App\Http\Requests;
 
 class PacientesController extends Controller
 {
@@ -13,17 +17,9 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $pacientes = Pacientes::all();
+        $conversion = PacienteResource::collection($pacientes);
+        return response()->json($conversion);
     }
 
     /**
@@ -34,7 +30,45 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' => 'El campo: :attribute, es requerido.',
+            'string' => 'El campo: :attribute, debe de ser texto.',
+            'numeric' => 'El campo: :attribute, debe contener números.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string',
+            'apellido_materno' => 'required|string',
+            'apellido_paterno' => 'required|string',
+            'tipo_sangre' => 'required|string',
+            'peso' => 'required|numeric',
+            'telefono' => 'required|numeric',
+            'estatura' => 'required|numeric',
+            'edad' => 'required|numeric',
+            'afiliacion' => 'required|string',
+            'direccion' => 'required|string',
+        ], $messages);
+        
+        if ($validator->fails())
+        {
+            $response = array('response' => $validator->messages(), 'success' => false);
+            return $response;
+        }
+        else
+        {
+            $pacientesAgregar = new Pacientes;
+            $pacientesAgregar->nombre = $request->input('nombre');
+            $pacientesAgregar->apellido_materno = $request->input('apellido_materno');
+            $pacientesAgregar->apellido_paterno = $request->input('apellido_paterno');
+            $pacientesAgregar->tipo_sangre = $request->input('tipo_sangre');
+            $pacientesAgregar->peso = $request->input('peso');
+            $pacientesAgregar->telefono = $request->input('telefono');
+            $pacientesAgregar->estatura = $request->input('estatura');
+            $pacientesAgregar->edad = $request->input('edad');
+            $pacientesAgregar->afiliacion = $request->input('afiliacion');
+            $pacientesAgregar->direccion = $request->input('direccion');
+            $pacientesAgregar->save();
+            return response()->json($pacientesAgregar);
+        }
     }
 
     /**
@@ -45,18 +79,9 @@ class PacientesController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $pacienteMostrar = Pacientes::findOrFail($id);
+        $conversion = new PacienteResource($pacienteMostrar);
+        return response()->json($conversion);
     }
 
     /**
@@ -68,7 +93,45 @@ class PacientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'required' => 'El campo: :attribute, es requerido.',
+            'string' => 'El campo: :attribute, debe de ser texto.',
+            'numeric' => 'El campo: :attribute, debe contener números.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string',
+            'apellido_materno' => 'required|string',
+            'apellido_paterno' => 'required|string',
+            'tipo_sangre' => 'required|string',
+            'peso' => 'required|numeric',
+            'telefono' => 'required|numeric',
+            'estatura' => 'required|numeric',
+            'edad' => 'required|numeric',
+            'afiliacion' => 'required|string',
+            'direccion' => 'required|string',
+        ], $messages);
+        
+        if ($validator->fails())
+        {
+            $response = array('response' => $validator->messages(), 'success' => false);
+            return $response;
+        }
+        else
+        {
+            $pacientesActualizar = Pacientes::findOrFail($id);
+            $pacientesActualizar->nombre = $request->input('nombre');
+            $pacientesActualizar->apellido_materno = $request->input('apellido_materno');
+            $pacientesActualizar->apellido_paterno = $request->input('apellido_paterno');
+            $pacientesActualizar->tipo_sangre = $request->input('tipo_sangre');
+            $pacientesActualizar->peso = $request->input('peso');
+            $pacientesActualizar->telefono = $request->input('telefono');
+            $pacientesActualizar->estatura = $request->input('estatura');
+            $pacientesActualizar->edad = $request->input('edad');
+            $pacientesActualizar->afiliacion = $request->input('afiliacion');
+            $pacientesActualizar->direccion = $request->input('direccion');
+            $pacientesActualizar->save();
+            return response()->json($pacientesActualizar);
+        }
     }
 
     /**
@@ -79,6 +142,10 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paciente = Pacientes::findOrFail($id);
+        if($paciente->delete()){
+            $conversion = new PacienteResource($paciente);
+            return response()->json($conversion);
+        }
     }
 }

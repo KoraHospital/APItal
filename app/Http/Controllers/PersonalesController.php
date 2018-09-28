@@ -30,7 +30,22 @@ class PersonalesController extends Controller
      */
     public function store(Request $request)
     {
-
+        $messages = [
+            'required' => 'El campo: :attribute, es requerido.',
+            'string' => 'El campo: :attribute, debe de ser texto.',
+            'alpha_num' => 'El campo: :attribute, debe contener números.',
+            'date' => 'El campo: :attribute, debe de ser una fecha.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string',
+            'apellido_materno' => 'required|string',
+            'apellido_paterno' => 'required|string',
+            'fecha_nacimiento' => 'required|date',
+            'rol' => 'required|string',
+            'turno' => 'required|string',
+            'telefono' => 'required|alpha_num',
+            'direccion' => 'required|string',
+        ], $messages);
         
         if ($validator->fails())
         {
