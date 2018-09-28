@@ -22,7 +22,7 @@ Route::resource('citas', 'CitasController');
 Route::resource('consultas', 'ConsultasController');
 Route::resource('medicamentos', 'MedicamentosController');
 Route::resource('pacientes', 'PacientesController');
-Route::resource('personales', 'PersonaslesController');
+Route::resource('personales', 'PersonalesController');
 
 Route::put('citas/{id}', 'CitasController@update');
 Route::put('consultas/{id}', 'ConsultasController@update');
