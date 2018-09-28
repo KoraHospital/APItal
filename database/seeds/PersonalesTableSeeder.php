@@ -11,6 +11,6 @@ class PersonalesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Personales::class, 100)->create();
+        factory(App\Personal::class, 100)->create();
     }
 }

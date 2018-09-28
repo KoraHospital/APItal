@@ -14,6 +14,10 @@ class Consulta extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'cita_id' => $this->cita_id,
+            'personal_id' => $this->personal_id,
+            'medicamento_id' => $this->medicamento_id
+        ];
     }
 }

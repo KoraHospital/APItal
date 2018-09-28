@@ -15,9 +15,9 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cita');
-            $table->integer('id_personal');
-            $table->integer('id_medicamento');
+            $table->integer('cita_id');
+            $table->integer('personal_id');
+            $table->integer('medicamento_id');
         });
     }
 

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Citas::class, function (Faker $faker) {
+$factory->define(App\Cita::class, function (Faker $faker) {
     return [
         'paciente_id' => $faker->numberBetween($min = 0, $max = 100),
         'fecha_hora' => $faker->dateTimeThisDecade($max = 'now'),

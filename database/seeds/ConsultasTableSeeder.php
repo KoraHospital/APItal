@@ -11,6 +11,6 @@ class ConsultasTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Consultas::class, 100)->create();
+        factory(App\Consulta::class, 100)->create();
     }
 }

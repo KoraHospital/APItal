@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Consulta;;
+use Validator;
+use App\Http\Resources\Consulta as CitaResource;
+use App\Http\Requests;
 
 class ConsultaController extends Controller
 {
@@ -13,7 +17,9 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        //
+        $consultas = Consulta::all();
+        $conversion = CitaResource::collection($consultas);
+        return response()->json($conversion);
     }
 
     /**
