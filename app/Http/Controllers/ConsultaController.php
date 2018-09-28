@@ -7,6 +7,7 @@ use App\Consulta;;
 use Validator;
 use App\Http\Resources\Consulta as ConsultaResource;
 use App\Http\Requests;
+use App\Medicamentos;
 
 class ConsultaController extends Controller
 {
@@ -50,7 +51,7 @@ class ConsultaController extends Controller
             $consultaActualizar = new Consulta;
             $consultaActualizar->cita_id = $request->input('cita_id');
             $consultaActualizar->personal_id = $request->input('personal_id');
-            $consultaActualizar->medicamento_id = $request->input('medicamento_id');
+            $consultaActualizar->medicamento_id = $request->input('medicamentos_id');
             $consultaActualizar->save();
             return response()->json($consultaActualizar);
         }
@@ -98,7 +99,7 @@ class ConsultaController extends Controller
             $consultaActualizar = Consulta::find($id);
             $consultaActualizar->cita_id = $request->input('cita_id');
             $consultaActualizar->personal_id = $request->input('personal_id');
-            $consultaActualizar->medicamento_id = $request->input('medicamento_id');
+            $consultaActualizar->medicamento_id = $request->input('medicamentos_id');
             $consultaActualizar->save();
             return response()->json($consultaActualizar);
         }
@@ -117,5 +118,12 @@ class ConsultaController extends Controller
             $conversion = new ConsultaResource($consulta);
             return response()->json($conversion);
         }
+    }
+
+    public function medicamentoConsulta($id)
+    {
+        $medicamentoConsulta = Medicamentos::find($id)->consulta;;
+        // $conversion = new PacienteResource($pacienteCita);
+        return response()->json($medicamentoConsulta);
     }
 }
