@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Citas;
+use App\Cita;
 use Validator;
 use App\Http\Resources\Cita as CitaResource;
 use App\Http\Requests;
 
-class CitasController extends Controller
+class CitaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class CitasController extends Controller
      */
     public function index()
     {
-        $citas = Citas::all();
+        $citas = Cita::all();
         $conversion = CitaResource::collection($citas);
         return response()->json($conversion);
     }
@@ -51,7 +51,7 @@ class CitasController extends Controller
         }
         else
         {
-            $citaActualizar = new Citas;
+            $citaActualizar = new Cita;
             $citaActualizar->id_paciente = $request->input('id_paciente');
             $citaActualizar->fecha_hora = $request->input('fecha_hora');
             $citaActualizar->consultorio = $request->input('consultorio');
@@ -70,7 +70,7 @@ class CitasController extends Controller
      */
     public function show($id)
     {
-        $citaMostrar = Citas::findOrFail($id);
+        $citaMostrar = Cita::findOrFail($id);
         $conversion = new CitaResource($citaMostrar);
         return response()->json($conversion);
     }
@@ -124,7 +124,7 @@ class CitasController extends Controller
      */
     public function destroy($id)
     {
-        $cita = Citas::findOrFail($id);
+        $cita = Cita::findOrFail($id);
         if($cita->delete()){
             $conversion = new CitaResource($cita);
             return response()->json($conversion);

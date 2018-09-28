@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Personales;
+use App\Personal;
 use Validator;
 use App\Http\Resources\Personal as PersonalResource;
 use App\Http\Requests;
 
-class PersonalesController extends Controller
+class PersonalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PersonalesController extends Controller
      */
     public function index()
     {
-        $personales = Personales::all();
+        $personales = Personal::all();
         $conversion = PersonalResource::collection($personales);
         return response()->json($conversion);
     }
@@ -54,7 +54,7 @@ class PersonalesController extends Controller
         }
         else
         {
-            $personalActualizar = new Personales;
+            $personalActualizar = new Personal;
             $personalActualizar->nombre = $request->input('nombre');
             $personalActualizar->apellido_materno = $request->input('apellido_materno');
             $personalActualizar->apellido_paterno = $request->input('apellido_paterno');
@@ -76,7 +76,7 @@ class PersonalesController extends Controller
      */
     public function show($id)
     {
-        $personalMostrar = Personales::findOrFail($id);
+        $personalMostrar = Personal::findOrFail($id);
         $conversion = new PersonalResource($personalMostrar);
         return response()->json($conversion);
     }
@@ -114,7 +114,7 @@ class PersonalesController extends Controller
         }
         else
         {
-            $personalActualizar = Personales::findOrFail($id);
+            $personalActualizar = Personal::findOrFail($id);
             $personalActualizar->nombre = $request->input('nombre');
             $personalActualizar->apellido_materno = $request->input('apellido_materno');
             $personalActualizar->apellido_paterno = $request->input('apellido_paterno');
@@ -136,7 +136,7 @@ class PersonalesController extends Controller
      */
     public function destroy($id)
     {
-        $personal = Personales::findOrFail($id);
+        $personal = Personal::findOrFail($id);
         if($personal->delete()){
             $conversion = new PersonalResource($personal);
             return response()->json($conversion);

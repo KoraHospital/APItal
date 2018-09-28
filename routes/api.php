@@ -18,15 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('citas', 'CitasController');
-Route::resource('consultas', 'ConsultasController');
-Route::resource('medicamentos', 'MedicamentosController');
-Route::resource('pacientes', 'PacientesController');
-Route::resource('personales', 'PersonalesController');
+Route::resource('citas', 'CitaController');
+Route::resource('consultas', 'ConsultaController');
+Route::resource('medicamentos', 'MedicamentoController');
+Route::resource('pacientes', 'PacienteController');
+Route::resource('personales', 'PersonalController');
 
-Route::put('citas/{id}', 'CitasController@update');
-Route::put('consultas/{id}', 'ConsultasController@update');
-Route::put('medicamentos/{id}', 'MedicamentosController@update');
-Route::put('pacientes/{id}', 'PacientesController@update');
-Route::put('personales/{id}', 'PersonalesController@update');
+Route::put('citas/{id}', 'CitaController@update');
+Route::put('consultas/{id}', 'ConsultaController@update');
+Route::put('medicamentos/{id}', 'MedicamentoController@update');
+Route::put('pacientes/{id}', 'PacienteController@update');
+Route::put('personales/{id}', 'PersonalController@update');
 

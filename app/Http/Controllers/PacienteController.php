@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pacientes;
+use App\Paciente;
 use Validator;
 use App\Http\Resources\Paciente as PacienteResource;
 use App\Http\Requests;
 
-class PacientesController extends Controller
+class PacienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Pacientes::all();
+        $pacientes = Paciente::all();
         $conversion = PacienteResource::collection($pacientes);
         return response()->json($conversion);
     }
@@ -55,7 +55,7 @@ class PacientesController extends Controller
         }
         else
         {
-            $pacientesAgregar = new Pacientes;
+            $pacientesAgregar = new Paciente;
             $pacientesAgregar->nombre = $request->input('nombre');
             $pacientesAgregar->apellido_materno = $request->input('apellido_materno');
             $pacientesAgregar->apellido_paterno = $request->input('apellido_paterno');
@@ -79,7 +79,7 @@ class PacientesController extends Controller
      */
     public function show($id)
     {
-        $pacienteMostrar = Pacientes::findOrFail($id);
+        $pacienteMostrar = Paciente::findOrFail($id);
         $conversion = new PacienteResource($pacienteMostrar);
         return response()->json($conversion);
     }
@@ -118,7 +118,7 @@ class PacientesController extends Controller
         }
         else
         {
-            $pacientesActualizar = Pacientes::findOrFail($id);
+            $pacientesActualizar = Paciente::findOrFail($id);
             $pacientesActualizar->nombre = $request->input('nombre');
             $pacientesActualizar->apellido_materno = $request->input('apellido_materno');
             $pacientesActualizar->apellido_paterno = $request->input('apellido_paterno');
@@ -142,7 +142,7 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
-        $paciente = Pacientes::findOrFail($id);
+        $paciente = Paciente::findOrFail($id);
         if($paciente->delete()){
             $conversion = new PacienteResource($paciente);
             return response()->json($conversion);

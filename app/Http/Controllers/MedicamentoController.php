@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Medicamentos;
+use App\Medicamento;
 use App\Http\Resources\Medicamento as MedicamentoResource;
 use App\Http\Requests;
 use Validator;
@@ -17,7 +17,7 @@ class MedicamentosController extends Controller
      */
     public function index()
     {
-        $medicamentos = Medicamentos::all();
+        $medicamentos = Medicamento::all();
         $conversion = MedicamentoResource::collection($medicamentos);
         return response()->json($conversion);
     }
@@ -51,7 +51,7 @@ class MedicamentosController extends Controller
         }
         else
         {
-            $medicamentoNuevo = new Medicamentos;
+            $medicamentoNuevo = new Medicamento;
             $medicamentoNuevo->nombre = $request->input('nombre');
             $medicamentoNuevo->cantidad = $request->input('cantidad');
             $medicamentoNuevo->aplicacion = $request->input('aplicacion');
@@ -70,7 +70,7 @@ class MedicamentosController extends Controller
      */
     public function show($id)
     {
-        $medicamentoMostrar = Medicamentos::findOrFail($id);
+        $medicamentoMostrar = Medicamento::findOrFail($id);
         $conversion = new MedicamentoResource($medicamentoMostrar);
         return response()->json($conversion);
     }
@@ -105,7 +105,7 @@ class MedicamentosController extends Controller
         }
         else
         {
-            $medicamentoActualizar = Medicamentos::findOrFail($id);
+            $medicamentoActualizar = Medicamento::findOrFail($id);
             $medicamentoActualizar->nombre = $request->input('nombre');
             $medicamentoActualizar->cantidad = $request->input('cantidad');
             $medicamentoActualizar->aplicacion = $request->input('aplicacion');
@@ -124,7 +124,7 @@ class MedicamentosController extends Controller
      */
     public function destroy($id)
     {
-        $medicamento = Medicamentos::findOrFail($id);
+        $medicamento = Medicamento::findOrFail($id);
         if($medicamento->delete()){
             $conversion = new MedicamentoResource($medicamento);
             return response()->json($conversion);
