@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Paciente;
+use App\Cita as cita;
 use Validator;
 use App\Http\Resources\Paciente as PacienteResource;
 use App\Http\Requests;

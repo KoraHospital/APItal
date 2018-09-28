@@ -1,0 +1,1 @@
+App\Paciente::find(51)->cita;

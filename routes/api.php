@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('pacientes/citas/{id}', 'CitaController@pacienteCitas');
 
 Route::resource('citas', 'CitaController');
 Route::resource('consultas', 'ConsultaController');

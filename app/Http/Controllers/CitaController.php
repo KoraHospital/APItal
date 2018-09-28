@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cita;
+use App\Paciente;
 use Validator;
 use App\Http\Resources\Cita as CitaResource;
+use App\Http\Resources\Paciente as PacienteResource;
 use App\Http\Requests;
 
 class CitaController extends Controller
@@ -71,7 +73,7 @@ class CitaController extends Controller
     public function show($id)
     {
         $citaMostrar = Cita::findOrFail($id);
-        $conversion = new CitaResource($citaMostrar);
+        $conversion = new PacienteResource($citaMostrar);
         return response()->json($conversion);
     }
 
@@ -105,7 +107,7 @@ class CitaController extends Controller
         }
         else
         {
-            $citaActualizar = Citas::findOrFail($id);
+            $citaActualizar = Cita::findOrFail($id);
             $citaActualizar->id_paciente = $request->input('id_paciente');
             $citaActualizar->fecha_hora = $request->input('fecha_hora');
             $citaActualizar->consultorio = $request->input('consultorio');
@@ -129,5 +131,12 @@ class CitaController extends Controller
             $conversion = new CitaResource($cita);
             return response()->json($conversion);
         }
+    }
+
+    public function pacienteCitas($id)
+    {
+        $pacienteCita = Paciente::find($id)->cita;;
+        // $conversion = new PacienteResource($pacienteCita);
+        return response()->json($pacienteCita);
     }
 }

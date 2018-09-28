@@ -15,11 +15,12 @@ class Cita extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_paciente' => $this->id_paciente,
+            'paciente_id' => $this->paciente_id,
             'fecha_hora' => $this->fecha_hora,
             'consultorio' => $this->consultorio,
             'tipo' => $this->tipo,
             'afiliacion' => $this->afiliacion
         ];
+        // return parent::toArray($request);
     }
 }
