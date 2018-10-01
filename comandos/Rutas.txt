@@ -1,0 +1,42 @@
+GET
+    localhost:8080/hospital/public/api/personales
+    localhost:8080/hospital/public/api/personales/4
+    localhost:8080/hospital/public/api/pacientes
+    localhost:8080/hospital/public/api/pacientes/5
+    localhost:8080/hospital/public/api/citas
+    localhost:8080/hospital/public/api/citas/2
+    localhost:8080/hospital/public/api/consultas
+    localhost:8080/hospital/public/api/consultas/75
+    localhost:8080/hospital/public/api/medicamentos
+    localhost:8080/hospital/public/api/medicamentos/8
+
+PUT
+    localhost:8080/hospital/public/api/personales/6
+    localhost:8080/hospital/public/api/pacientes/5
+    localhost:8080/hospital/public/api/citas/59
+    localhost:8080/hospital/public/api/consultas/20
+    localhost:8080/hospital/public/api/medicamentos/8
+
+POST
+    localhost:8080/hospital/public/api/personales
+    localhost:8080/hospital/public/api/pacientes
+    localhost:8080/hospital/public/api/citas
+    localhost:8080/hospital/public/api/consultas
+    localhost:8080/hospital/public/api/medicamentos
+
+DELETE
+    localhost:8080/hospital/public/api/personales/2
+    localhost:8080/hospital/public/api/pacientes/101
+    localhost:8080/hospital/public/api/citas/50
+    localhost:8080/hospital/public/api/consultas/102
+    localhost:8080/hospital/public/api/medicamentos/101
+
+Relaciones entre tablas (GET)
+    localhost:8080/hospital/public/api/paciente/cita/20
+    localhost:8080/hospital/public/api/medicamento/consulta/52
+    localhost:8080/hospital/public/api/personal/consulta/20
+    localhost:8080/hospital/public/api/cita/consulta/20
+
+
+
+Fallas

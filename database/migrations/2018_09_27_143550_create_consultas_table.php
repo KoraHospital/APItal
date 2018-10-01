@@ -17,7 +17,7 @@ class CreateConsultasTable extends Migration
             $table->increments('id');
             $table->integer('cita_id');
             $table->integer('personal_id');
-            $table->integer('medicamentos_id');
+            $table->integer('medicamento_id');
         });
     }
 

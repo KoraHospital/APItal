@@ -39,7 +39,7 @@ class CitaController extends Controller
             'date' => 'El campo: :attribute, debe de ser una fecha.',
         ];
         $validator = Validator::make($request->all(), [
-            'id_paciente' => 'required|numeric',
+            'paciente_id' => 'required|numeric',
             'fecha_hora' => 'required|date',
             'consultorio' => 'required|numeric',
             'tipo' => 'required|string',
@@ -54,7 +54,7 @@ class CitaController extends Controller
         else
         {
             $citaActualizar = new Cita;
-            $citaActualizar->id_paciente = $request->input('id_paciente');
+            $citaActualizar->paciente_id = $request->input('paciente_id');
             $citaActualizar->fecha_hora = $request->input('fecha_hora');
             $citaActualizar->consultorio = $request->input('consultorio');
             $citaActualizar->tipo = $request->input('tipo');
@@ -73,7 +73,7 @@ class CitaController extends Controller
     public function show($id)
     {
         $citaMostrar = Cita::findOrFail($id);
-        $conversion = new PacienteResource($citaMostrar);
+        $conversion = new CitaResource($citaMostrar);
         return response()->json($conversion);
     }
 
@@ -93,7 +93,7 @@ class CitaController extends Controller
             'date' => 'El campo: :attribute, debe de ser una fecha.',
         ];
         $validator = Validator::make($request->all(), [
-            'id_paciente' => 'required|numeric',
+            'paciente_id' => 'required|numeric',
             'fecha_hora' => 'required|date',
             'consultorio' => 'required|numeric',
             'tipo' => 'required|string',
@@ -108,7 +108,7 @@ class CitaController extends Controller
         else
         {
             $citaActualizar = Cita::findOrFail($id);
-            $citaActualizar->id_paciente = $request->input('id_paciente');
+            $citaActualizar->paciente_id = $request->input('paciente_id');
             $citaActualizar->fecha_hora = $request->input('fecha_hora');
             $citaActualizar->consultorio = $request->input('consultorio');
             $citaActualizar->tipo = $request->input('tipo');
@@ -133,7 +133,7 @@ class CitaController extends Controller
         }
     }
 
-    public function pacienteCitas($id)
+    public function pacienteCita($id)
     {
         $pacienteCita = Paciente::find($id)->cita;;
         // $conversion = new PacienteResource($pacienteCita);

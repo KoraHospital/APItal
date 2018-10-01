@@ -17,7 +17,7 @@ class Consulta extends JsonResource
         return [
             'cita_id' => $this->cita_id,
             'personal_id' => $this->personal_id,
-            'medicamentos_id' => $this->medicamento_id
+            'medicamento_id' => $this->medicamentos_id
         ];
     }
 }

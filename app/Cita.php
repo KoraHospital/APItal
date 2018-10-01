@@ -13,4 +13,9 @@ class Cita extends Model
     {
         return $this->hasOne('App\Paciente');
     }
+
+    public function consulta()
+    {
+        return $this->hasOne('App\Consulta');
+    }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Consulta;;
+use App\Consulta;
 use Validator;
+use App\Cita;
+use App\Personal;
 use App\Http\Resources\Consulta as ConsultaResource;
 use App\Http\Requests;
-use App\Medicamentos;
+use App\Medicamento;
 
 class ConsultaController extends Controller
 {
@@ -38,7 +40,7 @@ class ConsultaController extends Controller
         $validator = Validator::make($request->all(), [
             'cita_id' => 'required|numeric',
             'personal_id' => 'required|numeric',
-            'medicamento_id' => 'required|numeric',
+            'medicamentos_id' => 'required|numeric',
         ], $messages);
         
         if ($validator->fails())
@@ -51,7 +53,7 @@ class ConsultaController extends Controller
             $consultaActualizar = new Consulta;
             $consultaActualizar->cita_id = $request->input('cita_id');
             $consultaActualizar->personal_id = $request->input('personal_id');
-            $consultaActualizar->medicamento_id = $request->input('medicamentos_id');
+            $consultaActualizar->medicamento_id = $request->input('medicamento_id');
             $consultaActualizar->save();
             return response()->json($consultaActualizar);
         }
@@ -86,7 +88,7 @@ class ConsultaController extends Controller
         $validator = Validator::make($request->all(), [
             'cita_id' => 'required|numeric',
             'personal_id' => 'required|numeric',
-            'medicamento_id' => 'required|numeric',
+            'medicamentos_id' => 'required|numeric',
         ], $messages);
         
         if ($validator->fails())
@@ -99,7 +101,7 @@ class ConsultaController extends Controller
             $consultaActualizar = Consulta::find($id);
             $consultaActualizar->cita_id = $request->input('cita_id');
             $consultaActualizar->personal_id = $request->input('personal_id');
-            $consultaActualizar->medicamento_id = $request->input('medicamentos_id');
+            $consultaActualizar->medicamento_id = $request->input('medicamento_id');
             $consultaActualizar->save();
             return response()->json($consultaActualizar);
         }
@@ -122,8 +124,22 @@ class ConsultaController extends Controller
 
     public function medicamentoConsulta($id)
     {
-        $medicamentoConsulta = Medicamentos::find($id)->consulta;;
+        $medicamentoConsulta = Medicamento::find($id)->consulta;
         // $conversion = new PacienteResource($pacienteCita);
         return response()->json($medicamentoConsulta);
+    }
+
+    public function personalConsulta($id)
+    {
+        $personalConsulta = Personal::find($id)->consulta;
+        // $conversion = new PacienteResource($pacienteCita);
+        return response()->json($personalConsulta);
+    }
+
+    public function citaConsulta($id)
+    {
+        $citaConsulta = Cita::find($id)->consulta;
+        // $conversion = new PacienteResource($pacienteCita);
+        return response()->json($citaConsulta);
     }
 }

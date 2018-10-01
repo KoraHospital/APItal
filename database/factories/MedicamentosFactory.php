@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Medicamentos::class, function (Faker $faker) {
+$factory->define(App\Medicamento::class, function (Faker $faker) {
     return [
         'nombre' => $faker->unique()->name,
         'cantidad' => $faker->randomFloat($nbMaxDecimals = 3, $min = 0, $max = 5),

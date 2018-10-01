@@ -103,7 +103,7 @@ class PersonalController extends Controller
             'fecha_nacimiento' => 'required|date',
             'rol' => 'required|string',
             'turno' => 'required|string',
-            'telefono' => 'required|alpha_num',
+            'telefono' => 'required|string',
             'direccion' => 'required|string',
         ], $messages);
         

@@ -8,7 +8,7 @@ use App\Http\Resources\Medicamento as MedicamentoResource;
 use App\Http\Requests;
 use Validator;
 
-class MedicamentosController extends Controller
+class MedicamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +38,7 @@ class MedicamentosController extends Controller
         ];
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string',
-            'cantidad' => 'required|string',
+            'cantidad' => 'required|numeric',
             'aplicacion' => 'required|string|min:10',
             'edad_aplicacion' => 'required|numeric',
             'fabricante' => 'required|string',
@@ -92,7 +92,7 @@ class MedicamentosController extends Controller
         ];
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string',
-            'cantidad' => 'required|string',
+            'cantidad' => 'required|numeric',
             'aplicacion' => 'required|string|min:10',
             'edad_aplicacion' => 'required|numeric',
             'fabricante' => 'required|string',

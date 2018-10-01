@@ -42,7 +42,7 @@ class PacienteController extends Controller
             'apellido_paterno' => 'required|string',
             'tipo_sangre' => 'required|string',
             'peso' => 'required|numeric',
-            'telefono' => 'required|numeric',
+            'telefono' => 'required|string',
             'estatura' => 'required|numeric',
             'edad' => 'required|numeric',
             'afiliacion' => 'required|string',
